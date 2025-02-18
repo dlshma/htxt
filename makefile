@@ -1,24 +1,25 @@
-CXX = g++
 
-CXXFLAGS = -Wall -g
+#CXX = g++
 
-TARGET = shiftSplitter
+#CXXFLAGS = -Wall -g
 
-TARGET_DEL = shiftSplitter.exe
+#TARGET = shiftSplitter
+
+#TARGET_DEL = shiftSplitter.exe
 
 #source files
-SRCS = shiftSplitter.cpp shifter.cpp
+#SRCS = shiftSplitter.cpp shifter.cpp
 
-OBJS = $(SRCS:.cpp=.o)
+#OBJS = $(SRCS:.cpp=.o)
 
-$(TARGET): $(OBJS)
-	$(CXX) $(CXXFLAGS) -o $(TARGET) $(OBJS)
+#$(TARGET): $(OBJS)
+	#$(CXX) $(CXXFLAGS) -o $(TARGET) $(OBJS)
 
-%.o: %.cpp
-	$(CXX) $(CXXFLAGS) -c $< -o $@
+#%.o: %.cpp
+	#$(CXX) $(CXXFLAGS) -c $< -o $@
 
-run: $(TARGET)
-	$(TARGET)
+#run: $(TARGET)
+	#$(TARGET)
 
-clean:
-	del $(TARGET_DEL) $(OBJS)
+#clean:
+	#del $(TARGET_DEL) $(OBJS)
