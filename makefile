@@ -2,12 +2,12 @@ CXX = g++
 
 CXXFLAGS = -Wall -g
 
-TARGET = main
+TARGET = shiftSplitter
 
-TARGET_DEL = main.exe
+TARGET_DEL = shiftSplitter.exe
 
 #source files
-SRCS = main.cpp
+SRCS = shiftSplitter.cpp shifter.cpp
 
 OBJS = $(SRCS:.cpp=.o)
 
