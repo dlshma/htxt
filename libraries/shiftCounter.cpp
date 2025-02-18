@@ -5,13 +5,18 @@
 #include <cstdint>
 using namespace std;
 
-// example byte 'c' to showcase the functionality
-uint8_t c{0b01100100};
+// example bytes to showcase functionality
+uint8_t a{0b01100100};
+uint8_t b{0b11101110};
+uint8_t c{0b01100101};
 
-// global count variable (this will break so make it not global plz)
+uint8_t bytes[] {a, b, c};
+
+// global count variables (this will break so make it not global plz)
 int count{0};
+int globalx{0};
 
-// <kinda redundant- integrate this into shift()> - returns bit in counter byte
+// returns bit in counter byte
 int checkBit(int x, int y)
 {
     if (x & (1 << y)) { return 1; }
@@ -22,7 +27,8 @@ int checkBit(int x, int y)
 // pass in the target byte, current 'value' to reference if shift occurred, and the bit being referenced
 void shift(int target, int shiftval, int spot)
 {       
-    if (spot < 8) {
+    if (spot < 8) 
+    {
         int x = checkBit(target, spot);
         if (shiftval ^ x) // okay IF THERE IS A CHANGE -> print how many bits were in a row and move on
         {
@@ -35,10 +41,9 @@ void shift(int target, int shiftval, int spot)
             count++; 
             shift(target, shiftval, ++spot);
         }
-    } 
-    else { // remainder is special because bytes wont start and end when htxt 'chars' do. so it's all very complicated unless the remainder value is given the special treatment.
-        cout << "reached end of byte with remainder " << count; 
-    }
+    } else {
+		globalx = shiftval;
+	}
 }
 
 // checkByte() is just to print the whole byte so you can see it OHHH THAT's WHY checkBit() IS SEPARATE
@@ -52,6 +57,10 @@ void checkByte(int z)
 
 int main() 
 {
-    shift(c, 0, 0);
+	for (int i : bytes)
+	{
+		shift(i, globalx, 0);
+		cout << "reached end of byte with " << count << " remaining bit(s) (value " << globalx << ")\n";
+	}
     return 0;
 }
